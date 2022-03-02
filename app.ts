@@ -5,10 +5,11 @@ const router = new Router()
 
 
 router.get("/about", ctx => (ctx.response.body = "About Us"))
-// router.get("/:name", ctx => (ctx.response.body = `Welcome Home ${ctx.params.name}` ))
+router.get("/", ctx => (ctx.response.body = `Welcome Home` ))
+router.get("/api/:name", ctx => (ctx.response.body = `Welcome Home ${ctx.params.name}` ))
 
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-await app.listen({port: 1122})
+await app.listen({port: 8888})
 

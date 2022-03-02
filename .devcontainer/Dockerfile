@@ -11,6 +11,10 @@ ENV PATH=${DENO_INSTALL}/bin:${PATH} \
     DENO_DIR=${DENO_INSTALL}/.cache/deno
 RUN deno install -qAf --unstable https://deno.land/x/denon/denon.ts
 
+
+RUN deno install -qAf --unstable https://deno.land/x/denon/denon.ts
+ENV PATH /root/.deno/bin:$PATH
+
 # Fish
 RUN echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_11/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
 RUN curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_11/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
@@ -31,5 +35,4 @@ RUN mv starship /usr/local/bin/
 
 RUN fish
 RUN echo "starship init fish | source" >> ~/.config/fish/config.fish
-
-CMD ["fish"]
+ 
